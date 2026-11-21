@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriPlan - Your Wellness Journey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <i class="fa-solid fa-leaf"></i>
+        <div>
+          <h1>NutriPlan</h1>
+          <p>Your Wellness Journey</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <p class="menu-title">Main Menu</p>
+        <button type="button" class="nav-btn active" data-view="home">
+          <i class="fa-solid fa-utensils"></i>
+          <span>Meals &amp; Recipes</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="scanner">
+          <i class="fa-solid fa-barcode"></i>
+          <span>Product Scanner</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="log">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span>Food Log</span>
+        </button>
+      </nav>
+
+      <div class="user-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
+        <div>
+          <p class="user-name">Youssef Amir</p>
+          <p class="user-role">Premium Member</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" aria-live="polite">
+      <header class="page-header">
+        <h2 id="page-title">Meals &amp; Recipes</h2>
+        <p id="page-subtitle">Discover delicious and nutritious recipes tailored for you</p>
+      </header>
+
+      <!-- 1. Home View -->
+      <section id="view-home" class="view active">
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label for="category-filter">Category</label>
+            <select id="category-filter">
+              <option value="all">All Categories</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="area-filter">Area</label>
+            <select id="area-filter">
+              <option value="all">All Areas</option>
+            </select>
+          </div>
+
+          <button type="button" id="reset-filters-btn" class="btn secondary-btn">
+            Reset Filters
+          </button>
+        </div>
+
+        <p id="meals-count" class="muted-text"></p>
+        <div id="meals-grid" class="meals-grid"></div>
+      </section>
+
+      <!-- 2. Meal Details View -->
+      <section id="view-details" class="view">
+        <button type="button" id="back-to-home-btn" class="btn secondary-btn mb-16">
+          <i class="fa-solid fa-arrow-left"></i> Back to Meals
+        </button>
+        <div id="meal-details-container"></div>
+      </section>
+
+      <!-- 3. Product Scanner View -->
+      <section id="view-scanner" class="view">
+        <div class="scanner-box">
+          <div class="filter-group">
+            <label for="scanner-input">Search Product by Name or Barcode</label>
+            <div class="scanner-row">
+              <input
+                type="text"
+                id="scanner-input"
+                placeholder="e.g. Nutella, Pepsi, or barcode 3017620422003"
+              />
+              <button type="button" id="search-product-btn" class="btn primary-btn">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+              </button>
+            </div>
+          </div>
+
+          <div class="quick-samples">
+            <span>Quick try:</span>
+            <button type="button" class="chip-btn" data-query="Nutella">Nutella</button>
+            <button type="button" class="chip-btn" data-query="Pepsi">Pepsi</button>
+            <button type="button" class="chip-btn" data-query="3017620422003">Barcode: Nutella</button>
+          </div>
+        </div>
+
+        <div id="scanner-results" class="meals-grid"></div>
+      </section>
+
+      <!-- 4. Food Log View -->
+      <section id="view-log" class="view">
+        <div class="daily-goal-card">
+          <div class="goal-header">
+            <h3>Daily Nutrition Progress</h3>
+            <button type="button" id="clear-log-btn" class="btn danger-btn">
+              Clear Log
+            </button>
+          </div>
+
+          <div id="nutrition-summary" class="nutrition-grid"></div>
+        </div>
+
+        <div class="log-list-card">
+          <h3>Logged Items Today</h3>
+          <div id="logged-items-list" class="logged-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
